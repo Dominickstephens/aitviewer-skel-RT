@@ -4,6 +4,7 @@
 This repository contains the Aitviewer-based visualization component for the REMI project. It's designed to receive SMPL parameters from a pose estimation client (like the one in the `ipman-r-RT` repository) and render a 3D human mesh in real-time. This allows for a decoupled system where pose estimation and visualization can run as separate processes.
 
 **Main REMI Project Page:** (https://dominickstephens.github.io/REMI_page/)
+
 **Ipman-R (Real-time Pose Estimation) Component:** [https://github.com/Dominickstephens/ipman-r-RT](https://github.com/Dominickstephens/ipman-r-RT)
 
 ## Overview of this Repository (aitviewer-skel-RT)
