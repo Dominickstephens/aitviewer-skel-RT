@@ -1,0 +1,11 @@
+Timestamp, Condition, FilterSetting, Avg Relay Packet Processing FPS, Avg Filter Latency (ms),Avg Raw Pose Body Change, Avg Filtered Pose Body Change,Avg Raw Pose Root Change, Avg Filtered Pose Root Change,Avg Raw Trans Change (mm), Avg Filtered Trans Change (mm),Avg Raw Betas Variance, Avg Filtered Betas Variance
+2025-05-10 11:15:49,No Filter Active,No Filter Active,29.8490,0.0161,0.1436,0.1436,1.1158,1.1158,13.3680,13.3680,0.3425,0.3425
+2025-05-10 11:16:12,OneEuro Moderate,OneEuro Moderate,29.7366,0.1196,0.1242,0.0201,1.0727,0.3668,11.9863,1.6143,0.3408,0.3400
+2025-05-10 11:16:23,OneEuro Smooth,OneEuro Smooth,29.6261,0.1174,0.1452,0.0079,1.0980,0.0960,13.2676,0.8152,0.3654,0.3424
+2025-05-10 11:16:40,Single Exp (Alpha 0.3 Smooth),Single Exp (Alpha 0.3 Smooth),29.8365,0.0504,0.1293,0.0294,1.1590,0.2659,12.5214,2.8281,0.3434,0.3426
+2025-05-10 11:16:54,Single Exp (Alpha 0.7 Responsive),Single Exp (Alpha 0.7 Responsive),29.7354,0.0496,0.1237,0.0755,0.9249,0.5731,12.8321,7.7655,0.3425,0.3422
+2025-05-10 11:17:08,Double Exp (A0.3 B0.1 Smooth),Double Exp (A0.3 B0.1 Smooth),29.7173,0.0669,0.1276,0.0283,0.9472,0.2228,12.4552,2.8333,0.3423,0.3418
+2025-05-10 11:17:21,Double Exp (A0.7 B0.3 Responsive),Double Exp (A0.7 B0.3 Responsive),29.7360,0.0736,0.1262,0.0742,1.1369,0.6836,13.7173,8.1298,0.3422,0.3419
+2025-05-10 11:17:38,Moving Avg (Win 3 Responsive),Moving Avg (Win 3 Responsive),29.7499,0.1312,0.1249,0.0423,1.1270,0.3763,12.1851,4.0757,0.3439,0.3435
+2025-05-10 11:17:51,Moving Avg (Win 5 Moderate),Moving Avg (Win 5 Moderate),29.7326,0.1337,0.2589,0.0517,1.0395,0.2126,17.5481,3.6485,0.3494,0.3452
+2025-05-10 11:18:09,Moving Avg (Win 10 Smooth),Moving Avg (Win 10 Smooth),29.7839,0.1436,0.1215,0.0125,1.0292,0.1090,11.8188,1.2307,0.3428,0.3424
