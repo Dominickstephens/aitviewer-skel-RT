@@ -1,3 +1,72 @@
+
+# REMI - Real-time SMPL Visualization with Aitviewer
+
+This repository contains the Aitviewer-based visualization component for the REMI project. It's designed to receive SMPL parameters from a pose estimation client (like the one in the `ipman-r-RT` repository) and render a 3D human mesh in real-time. This allows for a decoupled system where pose estimation and visualization can run as separate processes.
+
+**Main REMI Project Page:** (https://dominickstephens.github.io/REMI_page/)
+**Ipman-R (Real-time Pose Estimation) Component:** [https://github.com/Dominickstephens/ipman-r-RT](https://github.com/Dominickstephens/ipman-r-RT)
+
+## Overview of this Repository (aitviewer-skel-RT)
+
+This repository provides:
+* A custom Aitviewer server tailored to receive and display SMPL data.
+* Relay scripts that act as intermediaries: they receive data from the pose estimation client (e.g., `webcam_client.py` from `ipman-r-RT`) and forward it to the Aitviewer server.
+* Implementations of various filtering techniques (OneEuro, Single Exponential, Double Exponential, Moving Average) within the relay scripts to smooth the incoming pose data before visualization.
+* A metrics-gathering version of the relay script to evaluate the impact of these filters.
+
+## Scripts
+
+``` bash
+python examples/custom_smpl_server.py
+```
+
+This script starts the Aitviewer server. It's configured to listen for incoming connections (typically from one of the relay scripts below) and render RemoteSMPLSequence objects. The server displays a 3D environment with a floor, ready to visualize the animated SMPL model based on the data it receives.
+
+``` bash
+python remote_smpl2.py
+```
+
+This script acts as a relay client/server.
+
+Server Role: It listens for connections from a pose estimation client (e.g., webcam_client.py from the ipman-r-RT repository, which sends raw SMPL parameters).
+Client Role: It connects to the custom_smpl_server.py (Aitviewer server).
+Functionality: It receives raw SMPL data, creates a RemoteSMPLSequence in the Aitviewer, and continuously updates this sequence with the incoming data. This script relays the data without applying any explicit filtering.
+
+``` bash
+python examples/remote_smpl2_euro.py
+```
+
+This is an enhanced version of the relay script (remote_smpl2.py).
+
+- Functionality: Similar to remote_smpl2.py, it receives raw SMPL data from the pose estimation client and forwards it to the Aitviewer server.
+- OneEuro Filtering: The key difference is that this script applies a OneEuro filter to the incoming SMPL parameters (poses, betas, translation) before sending them to Aitviewer. This helps to smooth out jitter and create a more stable visualization. The filter parameters (min_cutoff, beta, d_cutoff) are predefined in the script.
+
+
+``` bash
+python examples/remote_smpl2_euro_metrics.py
+```
+
+This is the most comprehensive relay script, designed for evaluating different filtering techniques.
+Key features:
+
+- Relay Functionality: Receives raw SMPL data and forwards it to the Aitviewer server.
+- Dynamic Filtering: Implements multiple filtering algorithms:
+  - OneEuro Filter
+  - Single Exponential Smoothing
+  - Double Exponential Smoothing (Holt's Linear Trend)
+  - Moving Average Filter
+- GUI for Filter Selection: Provides a Tkinter GUI that allows the user to dynamically select which filter (and its preset parameters) to apply to the incoming data stream.
+- Metrics Calculation: Includes a separate thread to calculate and buffer various metrics comparing the raw and filtered data streams. Metrics include:
+  - Relay Packet Processing FPS
+  - Filter Latency (ms)
+  - Average Raw vs. Filtered Pose Body Change
+  - Average Raw vs. Filtered Pose Root Change
+  - Average Raw vs. Filtered Translation Change (mm)
+  - Average Raw vs. Filtered Betas Variance
+- CSV Logging: The GUI allows triggering a 5-second recording of these averaged metrics, which are saved to a CSV file (relay_filter_metrics_avg.csv). This enables quantitative comparison of the different filtering strategies.
+
+## For Installation, follow the below instructions
+
 # aitviewer - SKEL
 
 This fork of AitViewer enables the vizualization of Marker sequences, OpenSim models sequences, the BSM model and the SKEL model.
